@@ -1,0 +1,67 @@
+using System;
+
+namespace _02_Bike_Race
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int juniors = int.Parse(Console.ReadLine());
+            int seniors = int.Parse(Console.ReadLine());
+            string trackType = Console.ReadLine();
+
+            double taxJ = 0.0;
+            double taxS = 0.0;
+            //double sum = 0.0;
+            double finalSum = 0.0;
+            double expences = 0.0;
+            double discount = 0.0;
+
+            switch (trackType)
+            {
+                case "trail":
+                    taxJ = 5.5;
+                    taxS = 7;
+                    double sum1 = juniors * taxJ + seniors * taxS;
+                    expences = sum1 * 0.05;
+                    finalSum = sum1 - expences;
+                    Console.WriteLine($"{finalSum:f2}");
+                    break;
+                case "cross-country":
+                    taxJ = 8;
+                    taxS = 9.5;
+                    double sum2 = juniors * taxJ + seniors * taxS;
+                    int juniorsNSeniors = juniors + seniors;
+                    if (juniorsNSeniors >= 50)
+                    {
+                        discount = 0.25;
+                    }
+                    else
+                    {
+                        discount = 0.0;
+                    }
+                    double sum2Discount = sum2 - (sum2 * discount);
+                    expences = sum2Discount * 0.05;
+                    finalSum = sum2Discount - expences;
+                    Console.WriteLine($"{finalSum:f2}");
+                    break;
+                case "downhill":
+                    taxJ = 12.25;
+                    taxS = 13.75;
+                    double sum3 = juniors * taxJ + seniors * taxS;
+                    expences = sum3 * 0.05;
+                    finalSum = sum3 - expences;
+                    Console.WriteLine($"{finalSum:f2}");
+                    break;
+                case "road":
+                    taxJ = 20;
+                    taxS = 21.50;
+                    double sum4 = juniors * taxJ + seniors * taxS;
+                    expences = sum4 * 0.05;
+                    finalSum = sum4 - expences;
+                    Console.WriteLine($"{finalSum:f2}");
+                    break;
+            }
+        }
+    }
+}

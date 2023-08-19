@@ -1,0 +1,71 @@
+using System;
+
+namespace _06_Truck_Driver
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string season = Console.ReadLine();
+            double km = double.Parse(Console.ReadLine());
+
+            double priceKM = 0.0;
+            double priceFinal = 0.0;
+            double priceFinalD = 0.0;
+
+            if (km <= 5000)
+            {
+                switch (season)
+                {
+                    case "Spring":
+                    case "Autumn":
+                        priceKM = 0.75;
+                        break;
+                    case "Winter":
+                        priceKM = 1.05;
+                        break;
+                    case "Summer":
+                        priceKM = 0.90;
+                        break;
+                }
+                priceFinal = (priceKM * km) * 4;
+                priceFinalD = priceFinal - (priceFinal * 0.1);
+                Console.WriteLine($"{priceFinalD:f2}");
+            }
+            else if (km > 5000 && km <= 10000)
+            {
+                switch (season)
+                {
+                    case "Spring":
+                    case "Autumn":
+                        priceKM = 0.95;
+                        break;
+                    case "Winter":
+                        priceKM = 1.25;
+                        break;
+                    case "Summer":
+                        priceKM = 1.10;
+                        break;
+                }
+                priceFinal = (priceKM * km) * 4;
+                priceFinalD = priceFinal - (priceFinal * 0.1);
+                Console.WriteLine($"{priceFinalD:f2}");
+            }
+            else if (km > 10000 && km <= 20000)
+            {
+                switch (season)
+                {
+                    case "Spring":
+                    case "Autumn":
+                    case "Winter":
+                    case "Summer":
+                        priceKM = 1.45;
+                        break;
+                }
+                priceFinal = (priceKM * km) * 4;
+                priceFinalD = priceFinal - (priceFinal * 0.1);
+                Console.WriteLine($"{priceFinalD:f2}");
+            }
+        }
+    }
+}

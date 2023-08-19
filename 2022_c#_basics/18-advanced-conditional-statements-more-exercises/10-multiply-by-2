@@ -1,0 +1,29 @@
+using System;
+
+namespace _10_Multiply_by_2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 1000000; i++)
+            {
+                double number = double.Parse(Console.ReadLine());
+                if (number > 0)
+                {
+                    number = number * 2;
+                    Console.WriteLine($"Result: {number:f2}");
+                }
+                else if (number == 0)
+                {
+                    Console.WriteLine("Result: 0.00");
+                }
+                else if (number < 0)
+                {
+                    Console.WriteLine("Negative number!");
+                    break;
+                }
+            }
+        }
+    }
+}

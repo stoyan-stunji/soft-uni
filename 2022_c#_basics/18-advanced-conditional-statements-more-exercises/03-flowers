@@ -1,0 +1,150 @@
+using System;
+
+namespace _03_Flowers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int h = int.Parse(Console.ReadLine());
+            int r = int.Parse(Console.ReadLine());
+            int l = int.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            string holiday = Console.ReadLine();
+
+            double priceH = 0.0;
+            double priceR = 0.0;
+            double priceL = 0.0;
+
+            double priceFlowers = 0.0;
+            double priceFlowersA = 0.0;
+            double priceFlowersAD1 = 0.0;
+            double priceFlowersAD1D2 = 0.0;
+            double priceFlowersAD1D2B = 0.0;
+
+            double advancement = 0.0;
+            double discount1 = 0.0;
+            double discount2 = 0.0;
+
+            if (season == "Spring" || season == "Summer")
+            {
+                priceH = 2.00;
+                priceR = 4.10;
+                priceL = 2.50;
+
+                priceFlowers = h * priceH + r * priceR + l * priceL;
+
+                if (holiday == "Y")
+                {
+                    advancement = 0.15;
+                    priceFlowersA = priceFlowers + (priceFlowers * advancement);
+                    if (season == "Spring" && l > 7)
+                    {
+                        discount1 = 0.05;
+                    }
+                    else
+                    {
+                        discount1 = 0.0;
+                    }
+                    priceFlowersAD1 = priceFlowersA - (priceFlowersA * discount1);
+                    if (h + r + l > 20)
+                    {
+                        discount2 = 0.2;
+                    }
+                    else
+                    {
+                        discount2 = 0.0;
+                    }
+                    priceFlowersAD1D2 = priceFlowersAD1 - (priceFlowersAD1 * discount2);
+                    priceFlowersAD1D2B = priceFlowersAD1D2 + 2;
+                    Console.WriteLine($"{priceFlowersAD1D2B:f2}");
+                }
+                else if (holiday == "N")
+                {
+                    advancement = 0.0;
+                    priceFlowersA = priceFlowers + (priceFlowers * advancement);
+                    if (season == "Spring" && l > 7)
+                    {
+                        discount1 = 0.05;
+                    }
+                    else
+                    {
+                        discount1 = 0.0;
+                    }
+                    priceFlowersAD1 = priceFlowersA - (priceFlowersA * discount1);
+                    if (h + r + l > 20)
+                    {
+                        discount2 = 0.2;
+                    }
+                    else
+                    {
+                        discount2 = 0.0;
+                    }
+                    priceFlowersAD1D2 = priceFlowersAD1 - (priceFlowersAD1 * discount2);
+                    priceFlowersAD1D2B = priceFlowersAD1D2 + 2;
+                    Console.WriteLine($"{priceFlowersAD1D2B:f2}");
+                }
+            }
+            else if (season == "Winter" || season == "Autumn")
+            {
+                priceH = 3.75;
+                priceR = 4.50;
+                priceL = 4.15;
+
+                priceFlowers = h * priceH + r * priceR + l * priceL;
+
+                if (holiday == "Y")
+                {
+                    advancement = 0.15;
+                    priceFlowersA = priceFlowers + (priceFlowers * advancement);
+                    if (season == "Winter" && r >= 10)
+                    {
+                        discount1 = 0.10;
+                    }
+                    else
+                    {
+                        discount1 = 0.0;
+                    }
+                    priceFlowersAD1 = priceFlowersA - (priceFlowersA * discount1);
+                    if (h + r + l > 20)
+                    {
+                        discount2 = 0.2;
+                    }
+                    else
+                    {
+                        discount2 = 0.0;
+                    }
+                    priceFlowersAD1D2 = priceFlowersAD1 - (priceFlowersAD1 * discount2);
+                    priceFlowersAD1D2B = priceFlowersAD1D2 + 2;
+                    Console.WriteLine($"{priceFlowersAD1D2B:f2}");
+                }
+                else if (holiday == "N")
+                {
+                    advancement = 0.0;
+                    priceFlowersA = priceFlowers + (priceFlowers * advancement);
+                    if (season == "Winter" && r >= 10)
+                    {
+                        discount1 = 0.10;
+                    }
+                    else
+                    {
+                        discount1 = 0.0;
+                    }
+                    priceFlowersAD1 = priceFlowersA - (priceFlowersA * discount1);
+                    if (h + r + l > 20)
+                    {
+                        discount2 = 0.2;
+                    }
+                    else
+                    {
+                        discount2 = 0.0;
+                    }
+                    priceFlowersAD1D2 = priceFlowersAD1 - (priceFlowersAD1 * discount2);
+                    priceFlowersAD1D2B = priceFlowersAD1D2 + 2;
+                    Console.WriteLine($"{priceFlowersAD1D2B:f2}");
+                }
+            }
+
+        }
+    }
+}

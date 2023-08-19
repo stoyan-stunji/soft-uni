@@ -1,0 +1,151 @@
+using System;
+
+namespace _07_School_Camp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string season = Console.ReadLine();
+            string group = Console.ReadLine();
+            int pupils = int.Parse(Console.ReadLine());
+            int nights = int.Parse(Console.ReadLine());
+
+            double price = 0.0;
+            double priceVac = 0.0;
+            double discount = 0.0;
+            double priceVACD = 0.0;
+
+            switch (season)
+            {
+                case "Winter":
+
+                    if (group == "boys" || group == "girls")
+                    {
+                        price = 9.60;
+                    }
+                    else if (group == "mixed")
+                    {
+                        price = 10;
+                    }
+
+                    priceVac = pupils * nights * price;
+                    
+                    if (pupils >= 50)
+                    {
+                        discount = 0.5;
+                    }
+                    else if (pupils < 50 && pupils >= 20)
+                    {
+                        discount = 0.15;
+                    }
+                    else if (pupils < 20 && pupils >= 10)
+                    {
+                        discount = 0.05;
+                    }
+
+                    priceVACD = priceVac - (priceVac * discount);
+
+                    if (group == "boys")
+                    {
+                        Console.WriteLine($"Judo {priceVACD:f2} lv.");
+                    }
+                    else if (group == "girls")
+                    {
+                        Console.WriteLine($"Gymnastics {priceVACD:f2} lv.");
+                    }
+                    else if (group == "mixed")
+                    {
+                        Console.WriteLine($"Ski {priceVACD:f2} lv.");
+                    }
+                    break;
+
+                case "Spring":
+
+                    if (group == "boys" || group == "girls")
+                    {
+                        price = 7.20;
+                    }
+                    else if (group == "mixed")
+                    {
+                        price = 9.50;
+                    }
+
+                    priceVac = pupils * nights * price;
+
+                    if (pupils >= 50)
+                    {
+                        discount = 0.5;
+                    }
+                    else if (pupils < 50 && pupils >= 20)
+                    {
+                        discount = 0.15;
+                    }
+                    else if (pupils < 20 && pupils >= 10)
+                    {
+                        discount = 0.05;
+                    }
+
+                    priceVACD = priceVac - (priceVac * discount);
+
+                    if (group == "boys")
+                    {
+                        Console.WriteLine($"Tennis {priceVACD:f2} lv.");
+                    }
+                    else if (group == "girls")
+                    {
+                        Console.WriteLine($"Athletics {priceVACD:f2} lv.");
+                    }
+                    else if (group == "mixed")
+                    {
+                        Console.WriteLine($"Cycling {priceVACD:f2} lv.");
+                    }
+
+                    break;
+
+                case "Summer":
+
+                    if (group == "boys" || group == "girls")
+                    {
+                        price = 15;
+                    }
+                    else if (group == "mixed")
+                    {
+                        price = 20;
+                    }
+
+                    priceVac = pupils * nights * price;
+
+                    if (pupils >= 50)
+                    {
+                        discount = 0.5;
+                    }
+                    else if (pupils < 50 && pupils >= 20)
+                    {
+                        discount = 0.15;
+                    }
+                    else if (pupils < 20 && pupils >= 10)
+                    {
+                        discount = 0.05;
+                    }
+
+                    priceVACD = priceVac - (priceVac * discount);
+
+                    if (group == "boys")
+                    {
+                        Console.WriteLine($"Football {priceVACD:f2} lv.");
+                    }
+                    else if (group == "girls")
+                    {
+                        Console.WriteLine($"Volleyball {priceVACD:f2} lv.");
+                    }
+                    else if (group == "mixed")
+                    {
+                        Console.WriteLine($"Swimming {priceVACD:f2} lv.");
+                    }
+
+                    break;
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+using System;
+
+namespace _04_Car_To_Go
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+
+            double budgetD = 0.0;
+
+            if (budget <= 100)
+            {
+                Console.WriteLine("Economy class");
+                switch (season)
+                {
+                    case "Summer":
+                        Console.Write("Cabrio");
+                        budgetD = budget * 0.35;
+                        Console.Write($" - {budgetD:f2}");
+                        break;
+
+                    case "Winter":
+                        Console.Write("Jeep");
+                        budgetD = budget * 0.65;
+                        Console.Write($" - {budgetD:f2}");
+                        break;
+                }
+            }
+            else if (budget > 100 && budget <= 500)
+            {
+                Console.WriteLine("Compact class");
+                switch (season)
+                {
+                    case "Summer":
+                        Console.Write("Cabrio");
+                        budgetD = budget * 0.45;
+                        Console.Write($" - {budgetD:f2}");
+                        break;
+
+                    case "Winter":
+                        Console.Write("Jeep");
+                        budgetD = budget * 0.80;
+                        Console.Write($" - {budgetD:f2}");
+                        break;
+                }
+            }
+            else if (budget > 500)
+            {
+                Console.WriteLine("Luxury class");
+                switch (season)
+                {
+                    case "Summer":
+                        Console.Write("Jeep");
+                        budgetD = budget * 0.9;
+                        Console.Write($" - {budgetD:f2}");
+                        break;
+
+                    case "Winter":
+                        Console.Write("Jeep");
+                        budgetD = budget * 0.9;
+                        Console.Write($" - {budgetD:f2}");
+                        break;
+                }
+            }
+        }
+    }
+}

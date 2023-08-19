@@ -1,0 +1,76 @@
+using System;
+
+namespace _01_Match_Tickets
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            string category = Console.ReadLine();
+            int people = int.Parse(Console.ReadLine());
+
+            double vip = 499.99;
+            double normal = 249.99;
+
+            double transport = 0.0;
+
+            if (people >= 1 && people <= 4)
+            {
+                transport = budget * 0.75;
+            }
+            else if (people >= 5 && people <=9)
+            {
+                transport = budget * 0.6;
+            }
+            else if (people >= 10 && people <= 24)
+            {
+                transport = budget * 0.5;
+            }
+            else if (people >= 25 && people <= 49)
+            {
+                transport = budget * 0.4;
+            }
+            else if (people >= 50)
+            {
+                transport = budget * 0.25;
+            }
+
+            double money = budget - transport;
+
+            switch (category)
+            {
+                case "VIP":
+                    double priceVIP = people * vip;
+
+                    if (priceVIP < money)
+                    {
+                        double moneyLeft = money - priceVIP;
+                        Console.WriteLine($"Yes! You have {moneyLeft:f2} leva left.");
+                    }
+                    else if (priceVIP > money)
+                    {
+                        double moneyNeeded = priceVIP - money;
+                        Console.WriteLine($"Not enough money! You need {moneyNeeded:f2} leva.");
+                    }
+                    break;
+
+                case "Normal":
+                    double priceNormal = people * normal;
+
+                    if (priceNormal < money)
+                    {
+                        double moneyLeft = money - priceNormal;
+                        Console.WriteLine($"Yes! You have {moneyLeft:f2} leva left.");
+                    }
+                    else if (priceNormal > money)
+                    {
+                        double moneyNeeded = priceNormal - money;
+                        Console.WriteLine($"Not enough money! You need {moneyNeeded:f2} leva.");
+                    }
+                    break;
+            }
+
+        }
+    }
+}
