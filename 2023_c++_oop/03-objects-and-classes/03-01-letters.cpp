@@ -1,82 +1,90 @@
+// curEl.erase(remove_if(curEl.begin(), curEl.end(), ::ispunct), curEl.end());
+ 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <sstream>
+#include <memory>
 #include <algorithm>
-#include <unordered_set>
-
-//NOTE: 40/100
-
-char toLowerCase(char c) 
+#include <cctype>
+#include <vector>
+#include<set>
+#include <ctype.h>
+ 
+using namespace std;
+ 
+ 
+int main()
 {
-    return std::tolower(static_cast<unsigned char>(c));
-}
-
-int main() 
-{
-    std::string text;
-    std::getline(std::cin, text);
-
-    std::vector<char> letters;
-    while (true) 
+    vector<string> allWords;
+ 
+    string line;
+    getline(cin, line);
+ 
+    istringstream istr(line);
+    string curEl;
+ 
+    while (istr >> curEl)
     {
-        std::string letter;
-        std::getline(std::cin, letter);
-        
-        if (letter == ".")
-            break;
-            
-        letters.push_back(letter[0]);
-        
-        if(letter >= "A" && letter <= "Z")
-        {
-            letters.push_back(toLowerCase(letter[0]));
-        }
+      curEl.erase(remove_if(curEl.begin(), curEl.end(), ::ispunct), curEl.end());
+      allWords.push_back(curEl);
     }
-
-    std::vector<std::string> words;
-    std::string word;
-    for (char c : text) 
+ 
+    char letter;
+    cin >> letter;
+    cin.ignore();
+ 
+    while (letter != '.')
     {
-        if (std::isalpha(c)) 
+        set<string> forPrint;
+ 
+ 
+        for (size_t i = 0; i < allWords.size(); i++)
         {
-            word += c;
-        } 
-        else if (!word.empty()) 
-        {
-            words.push_back(word);
-            word.clear();
-        }
-    }
-
-    if (!word.empty()) 
-    {
-        words.push_back(word);
-    }
-
-    std::unordered_set<std::string> uniqueWords(words.begin(), words.end());
-    words.assign(uniqueWords.begin(), uniqueWords.end());
-
-    std::sort(words.begin(), words.end());
-
-    for (char letter : letters) 
-    {
-        bool found = false;
-
-        for (const std::string& word : words) 
-        {
-            if (word.find(letter) != std::string::npos) 
+            string originalWord = allWords[i];
+            string testCopy = originalWord;
+ 
+            string* upperWord = &testCopy;
+ 
+ 
+            transform(upperWord->begin(), upperWord->end(), upperWord->begin(), ::toupper);
+ 
+ 
+            char upperSym = toupper(letter);
+ 
+            size_t found = testCopy.find_first_of(upperSym);
+ 
+            if (found != std::string::npos)
             {
-                std::cout << word << " ";
-                found = true;
+                forPrint.insert(originalWord);
             }
+ 
         }
-
-        if (!found) 
+ 
+        if (forPrint.empty())
         {
-            std::cout << "---";
+            cout << "---" << endl;
+ 
         }
-        std::cout << std::endl;
+        else
+        {
+            set<string>::iterator itr;
+ 
+            for (itr = forPrint.begin(); itr != forPrint.end(); itr++)
+            {
+                cout << *itr << " ";
+            }
+ 
+            cout << endl;
+ 
+        }
+ 
+ 
+        cin >> letter;
+        cin.ignore();
     }
-
+ 
+ 
+    cout << endl;
+ 
     return 0;
-} 
+}
