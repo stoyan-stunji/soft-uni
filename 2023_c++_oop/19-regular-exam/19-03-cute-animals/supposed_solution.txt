@@ -1,0 +1,137 @@
+// ---------------------------------Начало на main.cpp ----------------------------------------------
+
+
+#include <sstream>
+#include "Noises.h"
+#include <cctype>
+
+
+
+int main(){
+
+    Noises noisesObj;
+
+    while (true){
+
+        std::string noiseTimeStr;
+        std::string noiseWordStr;
+
+        std::cin>>noiseTimeStr>>noiseWordStr;
+
+        std::string newNoiseWord = noiseWordStr;
+        noiseWordStr.clear();
+
+        for (char c:newNoiseWord){
+            noiseWordStr.push_back(std::tolower(c));
+        }
+
+        // if("TheEnd"==noiseWordStr || "THEEND"==noiseWordStr ){
+        //     break;
+        // }
+        if("theend"==noiseWordStr){
+            break;
+        }
+        noiseWordStr.clear();
+        noiseWordStr=newNoiseWord;
+
+        std::string theNoiseInfo;
+        theNoiseInfo=noisesObj.registerNoise(noiseTimeStr,noiseWordStr);
+
+        std::cout<<theNoiseInfo<<std::endl;
+    }
+
+    noisesObj.printStatistics(std::cout);
+
+
+
+    return 0;
+}
+
+// ---------------------------------Начало на Noises.cpp ----------------------------------------------
+
+#include <sstream>
+#include "Noises.h"
+
+
+std::string Noises::registerNoise(const std::string & time_, const std::string & noise_){
+
+    size_t timeNoise = stringToTime(time_);
+    if(noises.find(noise_)==noises.end()){
+        
+        noises[noise_] = Noise(timeNoise);
+    }
+    else
+    {
+        noises[noise_].newNoise(timeNoise);
+    }
+
+    std::ostringstream ostr;
+    ostr<<noise_<<": "<<noises[noise_].getNewNoiseStatistics();
+    return ostr.str();
+}
+
+
+void Noises::printStatistics(std::ostream & ostr) const{
+    ostr<<"----"<<std::endl;
+    
+    if(noises.empty()){
+        ostr<<"No noises."<<std::endl;
+        return;
+    }
+    for (auto element : noises){
+        ostr<<element.first<<": "<<element.second.getFinalStatistics()<<std::endl;
+    }
+    return;
+
+}
+
+// ---------------------------------Начало на Noise.cpp ----------------------------------------------
+
+#include <sstream>
+#include "Noise.h"
+
+
+void Noise::newNoise(size_t time){
+
+    this->last=time;
+    ++number;
+    int timeInterval = last-first;
+    each = timeInterval/number;
+
+    return;
+}
+
+std::string Noise::getNewNoiseStatistics(void) const{
+    std::ostringstream ostr;
+
+    if(number==1){
+        ostr<<this->number;
+        return ostr.str();
+    }
+
+    if(1>=each){
+        ostr<<this->number<<", each minute";
+        return ostr.str();
+    }
+
+    ostr<<this->number<<", each "<<this->each<<" minutes";    
+    return ostr.str();
+
+}
+std::string Noise::getFinalStatistics(void) const{
+    std::ostringstream ostr;
+
+    if(number==1){
+        ostr<<number<<" at "<<first;
+        return ostr.str();
+    }
+
+    if(1>=each){
+        ostr<<number<<", from "<<first<<" till "<<last<<", each minute";
+        return ostr.str();
+    }
+
+    ostr<<number<<", from "<<first<<" till "<<last<<", each "<<each<<" minutes";
+    
+    return ostr.str();
+}
