@@ -52,7 +52,7 @@ public class SummerOutfit {
             }
         }
 
-        System.out.printf("It's %.1f degrees, get your %s and %s.%n", degrees, outfit, shoes);
+        System.out.printf("It's %d degrees, get your %s and %s.%n", (int)degrees, outfit, shoes);
         scanner.close();
     }
 }
