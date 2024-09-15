@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class MinNumber {
     public static void main(String[] args) {
@@ -23,8 +24,13 @@ public class MinNumber {
             }
         }
 
-        // Output the minimum number after the loop ends
-        System.out.println(minN);
+        // Print minN without .0 if it's an integer
+        if (minN == (int) minN) {
+            System.out.println((int) minN);
+        } else {
+            DecimalFormat df = new DecimalFormat("#.##"); // Format to remove unnecessary decimal places
+            System.out.println(df.format(minN));
+        }
 
         scanner.close();
     }
