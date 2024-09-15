@@ -33,7 +33,7 @@ public class TennisRanklist {
         System.out.println("Final points: " + points);
 
         double average = totalWinPoints * 1.0 / tournaments;
-        System.out.println("Average points: " + Math.floor(average));
+        System.out.println("Average points: " + Math.round(average));
 
         double wonToursPercent = (wins * 1.0 / tournaments) * 100;
         System.out.printf("%.2f%%%n", wonToursPercent);
@@ -41,3 +41,4 @@ public class TennisRanklist {
         scanner.close();
     }
 }
+// 83/100
