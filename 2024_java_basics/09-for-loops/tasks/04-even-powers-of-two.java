@@ -1,19 +1,16 @@
-using System;
+import java.util.Scanner;
 
-namespace _02_Numbers_N1
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            int n = int.Parse(Console.ReadLine());
-            int num = 1;
+public class NumbersN1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int num = 1;
 
-            while (num <= n)
-            {
-                Console.WriteLine(num);
-                num = num * 4; // Multiplies by 4 in each iteration
-            }
+        for (int value = 0; value <= n; value += 2) {
+            System.out.println(num);
+            num = num * 2 * 2;
         }
+        
+        scanner.close();
     }
 }
