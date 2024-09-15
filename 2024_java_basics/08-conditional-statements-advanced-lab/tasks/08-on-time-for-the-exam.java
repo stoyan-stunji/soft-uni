@@ -1,3 +1,5 @@
+// not graded, for some reason
+
 import java.util.Scanner;
 
 public class OnTimeForTheExam {
