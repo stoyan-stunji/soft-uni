@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class MaxNumber {
     public static void main(String[] args) {
@@ -23,7 +24,13 @@ public class MaxNumber {
             }
         }
 
-        System.out.println(maxN);
+        // Print maxN without .0 if it's an integer
+        if (maxN == (int) maxN) {
+            System.out.println((int) maxN);
+        } else {
+            DecimalFormat df = new DecimalFormat("#.##"); // Format to remove unnecessary decimal places
+            System.out.println(df.format(maxN));
+        }
 
         scanner.close();
     }
