@@ -37,3 +37,4 @@ public class Graduation {
         scanner.close();
     }
 }
+// 44/100
