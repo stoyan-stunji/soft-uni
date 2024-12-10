@@ -1,40 +1,36 @@
 import java.util.Scanner;
 
-public class Graduation {
+public class Graduation_08 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String student = scanner.nextLine();
-        double rating = Double.parseDouble(scanner.nextLine());
+        String name = scanner.nextLine();
 
-        double totalRating = 0;
-        double avgRating = 0;
-        int grade = 1;
-        int fails = 0;
+        int countGrade = 1;
+        int countExcluded = 0;
+        double sumGrades = 0;
 
-        while (grade <= 12) {
-            if (rating < 4.00) {
-                fails++;
-            }
-
-            if (fails == 2) {
-                System.out.printf("%s has been excluded at %d grade%n", student, grade);
+        while (countGrade <= 12){
+            if(countExcluded == 2){
                 break;
             }
+            double currentGrade = Double.parseDouble(scanner.nextLine());
 
-            totalRating += rating;
-            avgRating = totalRating / grade;
-            grade++;
-
-            if (grade > 12) {
-                System.out.printf("%s graduated. Average grade: %.2f%n", student, avgRating);
-                break;
+            if(currentGrade >= 4){
+                countGrade++;
+                sumGrades += currentGrade;
+            }else {
+                countExcluded++;
+                continue;
             }
-
-            rating = Double.parseDouble(scanner.nextLine());
+            //System.out.println(currentGrade);
         }
 
-        scanner.close();
+        if(countExcluded == 2){
+            System.out.printf("%s has been excluded at %d grade", name, countGrade);
+        }else {
+            System.out.printf("%s graduated. Average grade: %.2f", name, sumGrades/12);
+        }
+
     }
 }
-// 44/100
