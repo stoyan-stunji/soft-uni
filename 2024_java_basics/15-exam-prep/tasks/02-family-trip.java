@@ -1,30 +1,33 @@
-package ExamPrep;
 
 import java.util.Scanner;
 
-public class FamilyTrip_02 {
+public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        double budget = Double.parseDouble(scanner.nextLine());
-        int days = Integer.parseInt(scanner.nextLine());
-        double pricePerDay = Double.parseDouble(scanner.nextLine());
-        int percentAdditionalMoney = Integer.parseInt(scanner.nextLine());
+        Double budget = Double.parseDouble(sc.nextLine());
+        Integer nights = Integer.parseInt(sc.nextLine());
+        Double pricePerNight = Double.parseDouble(sc.nextLine());
+        Integer addProcent = Integer.parseInt(sc.nextLine());
 
-        if (days > 7) {
-            pricePerDay = pricePerDay - (pricePerDay * 0.05);
+        if (nights > 7)
+        {
+            pricePerNight = pricePerNight - (pricePerNight * 0.05);
         }
 
-        double priceForAllDays = days * pricePerDay;
-        double additionalMoney = percentAdditionalMoney * 1.0 / 100 * budget;
+        Double nightSum = nights * pricePerNight;
+        Double additional = (budget * addProcent * 1.0) / 100;
+        Double sum = nightSum + additional;
 
-        double moneyNeeded = priceForAllDays + additionalMoney;
+        Double diff = budget - sum;
 
-        double diff = Math.abs(moneyNeeded - budget);
-        if (budget >= moneyNeeded) {
+        if(diff >= 0)
+        {
             System.out.printf("Ivanovi will be left with %.2f leva after vacation.", diff);
-        } else {
-            System.out.printf("%.2f leva needed.", diff);
+        }
+        else
+        {
+            System.out.printf("%.2f leva needed.", -diff);
         }
     }
 }
