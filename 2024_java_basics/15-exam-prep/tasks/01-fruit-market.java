@@ -1,31 +1,26 @@
-package ExamPrep;
 
 import java.util.Scanner;
 
-public class FruitMarket_01 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Double strawberryPrice = Double.parseDouble(scanner.nextLine());
+        Double bananaKG = Double.parseDouble(scanner.nextLine());
+        Double orangesKG = Double.parseDouble(scanner.nextLine());
+        Double berryKG = Double.parseDouble(scanner.nextLine());
+        Double strawberryKB = Double.parseDouble(scanner.nextLine());
 
-        double strawberriesPrice = Double.parseDouble(scanner.nextLine());
-        double bananasKg = Double.parseDouble(scanner.nextLine());
-        double orangeKg = Double.parseDouble(scanner.nextLine());
-        double raspberriesKg = Double.parseDouble(scanner.nextLine());
-        double strawberriesKg = Double.parseDouble(scanner.nextLine());
+        Double berryPrice = strawberryPrice / 2;
+        Double orangesPrice = berryPrice - (berryPrice * 0.4);
+        Double bananaPrice = berryPrice - (berryPrice * 0.8);
 
-        //•	цената на малините е на половина по-ниска от тази на ягодите;
-        double raspberriesPrice = strawberriesPrice / 2;
-        //•	цената на портокалите е с 40% по-ниска от цената на малините;
-        double orangePrice = raspberriesPrice - (raspberriesPrice * 0.40);
-        //•	цената на бананите е с 80% по-ниска от цената на малините.
-        double bananasPrice = raspberriesPrice - (raspberriesPrice * 0.80);
+        Double strawberries = strawberryPrice * strawberryKB;
+        Double bananas = bananaPrice * bananaKG;
+        Double oranges = orangesPrice * orangesKG;
+        Double berries = berryPrice * berryKG;
 
-        double raspberriesSum = raspberriesPrice * raspberriesKg;
-        double orangeSum = orangePrice * orangeKg;
-        double bananasSum = bananasPrice * bananasKg;
-        double strawberriesSum = strawberriesPrice * strawberriesKg;
+        Double sum = berries + strawberries + bananas + oranges;
 
-        double totalSum = raspberriesSum + orangeSum + bananasSum + strawberriesSum;
-
-        System.out.printf("%.2f", totalSum);
+        System.out.printf("%.2f", sum);
     }
 }
