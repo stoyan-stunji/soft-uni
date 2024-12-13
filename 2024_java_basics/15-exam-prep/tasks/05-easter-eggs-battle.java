@@ -1,40 +1,49 @@
-package ExamPrep;
 
 import java.util.Scanner;
+import java.util.Vector;
 
-public class EasterEggsBattle_05 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int one = Integer.parseInt(scanner.nextLine());
-        int two = Integer.parseInt(scanner.nextLine());
+        Integer feggs = Integer.parseInt(scanner.nextLine());
+        Integer seggs = Integer.parseInt(scanner.nextLine());
+        String cmd = scanner.nextLine();
 
-        boolean noMoreEgs = false;
+        Boolean flag = false;
 
-        String command = scanner.nextLine();
-        while (!command.equals("End")) {
-
-            if (command.equals("one")) {
-                two--;
-            } else {
-                one--;
+        while(!cmd.equals("End"))
+        {
+            if(cmd.equals("one"))
+            {
+                seggs--;
+            }
+            else if(cmd.equals("two"))
+            {
+                feggs--;
             }
 
-            if (one == 0 || two == 0) {
-                noMoreEgs = true;
+            if (feggs == 0 || seggs == 0)
+            {
+                flag = true;
                 break;
             }
 
-            command = scanner.nextLine();
+            cmd = scanner.nextLine();
         }
 
-        if (noMoreEgs && two > 0) {
-            System.out.printf("Player one is out of eggs. Player two has %d eggs left.", two);
-        } else if (noMoreEgs && one > 0) {
-            System.out.printf("Player two is out of eggs. Player one has %d eggs left.", one);
-        } else {
-            System.out.printf("Player one has %d eggs left.%n", one);
-            System.out.printf("Player two has %d eggs left.", two);
+        if (flag && feggs > 0)
+        {
+            System.out.printf("Player two is out of eggs. Player one has %d eggs left.", feggs);
+        }
+        else if (flag && seggs > 0)
+        {
+            System.out.printf("Player one is out of eggs. Player two has %d eggs left.", seggs);
+        }
+        else
+        {
+            System.out.printf("Player one has %d eggs left.%n", feggs);
+            System.out.printf("Player two has %d eggs left.", seggs);
         }
     }
 }
