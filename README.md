@@ -4,3 +4,4 @@
 + [Quality Assurance Basics - 2023](https://github.com/stoyan-stunji/soft-uni/tree/main/2023_quality_assurance)
 + [Java Basics - Summer 2024](https://github.com/stoyan-stunji/soft-uni/tree/main/2024_java_basics)
 + [Java Basics - Winter 2024](https://github.com/stoyan-stunji/soft-uni/tree/main/2024_java_basics)
++ [AI Basics - 2025](https://github.com/stoyan-stunji/soft-uni/tree/main/2025_ai_basics)
